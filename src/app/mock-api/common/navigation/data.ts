@@ -1,39 +1,31 @@
 /* tslint:disable:max-line-length */
 import { FuseNavigationItem } from '@fuse/components/navigation';
 
-export const defaultNavigation: FuseNavigationItem[] = [
+const navigation: FuseNavigationItem[] = [
     {
-        id   : 'example',
-        title: 'Example',
-        type : 'basic',
-        icon : 'heroicons_outline:chart-pie',
-        link : '/example'
+        id: 'Aplicaciones',
+        title: 'Aplicaciones',
+        type: 'basic',
+        icon: 'heroicons_outline:puzzle',
+        link: '/aplicaciones'
+    },
+    {
+        id: 'Modulos',
+        title: 'Modulos',
+        type: 'basic',
+        icon: 'heroicons_outline:cash',
+        link: '/modulos'
+    },
+    {
+        id: 'Permisos',
+        title: 'Permisos',
+        type: 'basic',
+        icon: 'heroicons_outline:shield-check',
+        link: '/permisos'
     }
 ];
-export const compactNavigation: FuseNavigationItem[] = [
-    {
-        id   : 'example',
-        title: 'Example',
-        type : 'basic',
-        icon : 'heroicons_outline:chart-pie',
-        link : '/example'
-    }
-];
-export const futuristicNavigation: FuseNavigationItem[] = [
-    {
-        id   : 'example',
-        title: 'Example',
-        type : 'basic',
-        icon : 'heroicons_outline:chart-pie',
-        link : '/example'
-    }
-];
-export const horizontalNavigation: FuseNavigationItem[] = [
-    {
-        id   : 'example',
-        title: 'Example',
-        type : 'basic',
-        icon : 'heroicons_outline:chart-pie',
-        link : '/example'
-    }
-];
+
+export const defaultNavigation: FuseNavigationItem[] = navigation;
+export const compactNavigation: FuseNavigationItem[] = navigation;
+export const futuristicNavigation: FuseNavigationItem[] = navigation;
+export const horizontalNavigation: FuseNavigationItem[] = navigation;
