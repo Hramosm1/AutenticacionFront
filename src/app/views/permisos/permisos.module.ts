@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { PermisosRoutingModule } from './permisos-routing.module';
 import { PermisosComponent } from './permisos/permisos.component';
+import { SharedModule } from 'app/shared/shared.module';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { PermisosComponent } from './permisos/permisos.component';
   ],
   imports: [
     CommonModule,
-    PermisosRoutingModule
+    PermisosRoutingModule,
+    SharedModule
   ]
 })
 export class PermisosModule { }
