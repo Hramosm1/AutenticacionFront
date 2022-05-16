@@ -2,12 +2,12 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { BackendService, BaseType } from 'app/core/services/backend.service';
-import { Column } from 'app/interfaces/crud-simple';
-import { Observer, tap } from 'rxjs';
+import { Column, Input } from 'app/interfaces/crud-simple';
+import { Observer } from 'rxjs';
 
 export interface Data {
   tabla: string
-  inputs: Column[]
+  inputs: Input[]
   api: BaseType
   editar?: boolean
   id?: number | string
@@ -22,7 +22,7 @@ export class SimpleFormComponent implements OnInit {
   formulario: FormGroup
   obs: Observer<any> = {
     next: res => {
-      if (res.rowsAffected[0] > 0) {
+      if (res.rowsAffected[res.rowsAffected.length - 1] > 0) {
         this.dialogRef.close()
       }
     },
@@ -33,7 +33,7 @@ export class SimpleFormComponent implements OnInit {
   ngOnInit(): void {
     console.log(this.data)
     const group = this.data.inputs.reduce((acc, cur) => {
-      return { ...acc, [cur.key]: ['', Validators.required] }
+      return { ...acc, [cur.key]: [cur.default ? cur.default : '', Validators.required] }
     }, {})
     this.formulario = this.fb.group(group)
     console.log(this.formulario)
