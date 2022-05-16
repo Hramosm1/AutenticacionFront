@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
+import { BackendService } from 'app/core/services/backend.service';
 
 @Component({
   selector: 'app-modulos',
@@ -8,11 +9,10 @@ import { MatTableDataSource } from '@angular/material/table';
 })
 export class ModulosComponent implements OnInit {
   columns = [{ name: 'test', key: 'test' }]
-  data: MatTableDataSource<any>
-  constructor() { }
+  data$ = this.api.getAll('modulos')
+  constructor(private api: BackendService) { }
 
   ngOnInit(): void {
-    this.data = new MatTableDataSource([{ test: 'exemplo' }])
   }
 
 }

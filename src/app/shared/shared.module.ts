@@ -2,10 +2,11 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CrudSimpleComponent } from './crud-simple/crud-simple.component';
-import { CreateComponent } from './crud-simple/create/create.component';
 import { TitleComponent } from './title/title.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from "@angular/material/table";
+import { DialogsModule } from './dialogs/dialogs.module';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
     imports: [
@@ -13,7 +14,9 @@ import { MatTableModule } from "@angular/material/table";
         FormsModule,
         ReactiveFormsModule,
         MatButtonModule,
-        MatTableModule
+        MatTableModule,
+        DialogsModule,
+        MatPaginatorModule
     ],
     exports: [
         CommonModule,
@@ -24,7 +27,6 @@ import { MatTableModule } from "@angular/material/table";
     ],
     declarations: [
         CrudSimpleComponent,
-        CreateComponent,
         TitleComponent
     ]
 })

@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http'
 import { Observable } from 'rxjs';
 import { environment } from 'environments/environment';
 
-type BaseType = 'aplicaciones' | 'usuarios' | 'roles' | 'modulos' | 'permisos' | 'permisosEspeciales';
+export type BaseType = 'aplicaciones' | 'usuarios' | 'roles' | 'modulos' | 'permisos' | 'permisosEspeciales';
 interface postResult {
   recordset: any[]
   recordsets: any[]

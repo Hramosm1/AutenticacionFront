@@ -2,5 +2,6 @@
   <app-title title="Aplicaciones" subTitle="Mantenimiento"
     description="Desde aqui puedes agregar o eliminar las distintas aplicaciones en las que vas a implementar la autenticacion">
   </app-title>
-  <app-crud-simple class="h-full flex items-center" [columns]="columns" [dataSource]="data"></app-crud-simple>
+  <app-crud-simple class="h-full flex flex-col items-center" [columns]="columns" [data]="data$"
+    [dataCreateAndEdit]="dataCreateAndEdit"></app-crud-simple>
 </div>
