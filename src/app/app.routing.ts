@@ -20,6 +20,8 @@ export const appRoutes: Route[] = [
             { path: 'permisos', loadChildren: () => import('app/views/permisos/permisos.module').then(m => m.PermisosModule) },
             { path: 'aplicaciones', loadChildren: () => import('app/views/aplicaciones/aplicaciones.module').then(m => m.AplicacionesModule) },
             { path: 'modulos', loadChildren: () => import('app/views/modulos/modulos.module').then(m => m.ModulosModule) },
+            { path: 'roles', loadChildren: () => import('app/views/roles/roles.module').then(m => m.RolesModule) },
+            { path: 'permisosEspeciales', loadChildren: () => import('app/views/permisos-especiales/permisos-especiales.module').then(m => m.PermisosEspecialesModule) }
         ]
     }
 ];

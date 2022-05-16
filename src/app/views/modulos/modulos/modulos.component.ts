@@ -20,9 +20,9 @@ export class ModulosComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.aplicacion.valueChanges.subscribe(id => {
-      this.up.next(this.api.getById('modulos', id))
-      this.dataCAE = { api: 'modulos', inputs: [{ key: 'nombre', name: 'Aplicacion' }, { key: 'idAplicacion', name: 'idAplicacion', default: id }], tabla: 'un modulo' }
       this.modulos$ = this.api.getById('modulos', id)
+      this.up.next(this.modulos$)
+      this.dataCAE = { api: 'modulos', inputs: [{ key: 'nombre', name: 'Aplicacion' }, { key: 'idAplicacion', name: 'idAplicacion', default: id }], tabla: 'un modulo' }
     })
   }
 

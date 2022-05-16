@@ -9,5 +9,5 @@
     </mat-select>
   </mat-form-field>
   <app-crud-simple *ngIf="aplicacion.value" class="h-full flex flex-col items-center" [columns]="columns"
-    [data]="modulos$" [dataCreateAndEdit]="dataCAE" [update]="up.asObservable()"></app-crud-simple>
+    [data]="permisos$" [dataCreateAndEdit]="dataCAE" [update]="up.asObservable()"></app-crud-simple>
 </div>

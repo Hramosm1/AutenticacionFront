@@ -41,7 +41,7 @@ export class CrudSimpleComponent implements OnInit, AfterViewInit, OnDestroy {
     this.dataSource.paginator = this.paginator
   }
   ngOnDestroy(): void {
-    this.subs.unsubscribe()
+    if (this.subs) this.subs.unsubscribe()
   }
   getData = () => {
     this.data.subscribe(res => this.dataSource.data = res)

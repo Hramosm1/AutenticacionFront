@@ -22,6 +22,20 @@ const navigation: FuseNavigationItem[] = [
         type: 'basic',
         icon: 'heroicons_outline:shield-check',
         link: '/permisos'
+    },
+    {
+        id: 'Roles',
+        title: 'Roles',
+        type: 'basic',
+        icon: 'heroicons_outline:users',
+        link: '/roles'
+    },
+    {
+        id: 'Permisos especiales',
+        title: 'Permisos especiales',
+        type: 'basic',
+        icon: 'heroicons_outline:sparkles',
+        link: '/permisosEspeciales'
     }
 ];
 
