@@ -22,7 +22,6 @@ export class BackendService {
     return this.http.get<T[]>(this.base + uri);
   }
   getById<T, D>(uri: BaseType, id: D): Observable<T> {
-    console.info(`${this.base}${uri}/${id}`);
     return this.http.get<T>(`${this.base}${uri}/${id}`);
   }
   create<BodyType>(uri: BaseType, body: BodyType): Observable<postResult> {
@@ -37,5 +36,8 @@ export class BackendService {
   }
   delete<IdType>(uri: BaseType, id: IdType): Observable<postResult> {
     return this.http.delete<postResult>(`${this.base}${uri}/${id}`);
+  }
+  actualizarPermisos(body: object) {
+    return this.http.put(this.base + 'permisos', body)
   }
 }

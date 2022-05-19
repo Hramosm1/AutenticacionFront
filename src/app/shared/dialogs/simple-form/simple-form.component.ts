@@ -31,7 +31,6 @@ export class SimpleFormComponent implements OnInit {
   }
   constructor(@Inject(MAT_DIALOG_DATA) public data: Data, private fb: FormBuilder, private api: BackendService, private dialogRef: MatDialogRef<SimpleFormComponent>) { }
   ngOnInit(): void {
-    console.log(this.data)
     const group = this.data.inputs.reduce((acc, cur) => {
       return { ...acc, [cur.key]: [cur.default ? cur.default : '', Validators.required] }
     }, {})
