@@ -21,7 +21,8 @@ export const appRoutes: Route[] = [
             { path: 'aplicaciones', loadChildren: () => import('app/views/aplicaciones/aplicaciones.module').then(m => m.AplicacionesModule) },
             { path: 'modulos', loadChildren: () => import('app/views/modulos/modulos.module').then(m => m.ModulosModule) },
             { path: 'roles', loadChildren: () => import('app/views/roles/roles.module').then(m => m.RolesModule) },
-            { path: 'permisosEspeciales', loadChildren: () => import('app/views/permisos-especiales/permisos-especiales.module').then(m => m.PermisosEspecialesModule) }
+            { path: 'permisosEspeciales', loadChildren: () => import('app/views/permisos-especiales/permisos-especiales.module').then(m => m.PermisosEspecialesModule) },
+            { path: 'personal', loadChildren: () => import('app/views/equipo/equipo.module').then(m => m.EquipoModule) }
         ]
     }
 ];

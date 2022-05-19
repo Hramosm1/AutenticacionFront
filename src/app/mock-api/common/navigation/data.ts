@@ -27,7 +27,7 @@ const navigation: FuseNavigationItem[] = [
         id: 'Roles',
         title: 'Roles',
         type: 'basic',
-        icon: 'heroicons_outline:users',
+        icon: 'heroicons_outline:hand',
         link: '/roles'
     },
     {
@@ -36,6 +36,13 @@ const navigation: FuseNavigationItem[] = [
         type: 'basic',
         icon: 'heroicons_outline:sparkles',
         link: '/permisosEspeciales'
+    },
+    {
+        id: 'AsignacionDeRoles',
+        title: 'Asignacion de roles',
+        type: 'basic',
+        icon: 'heroicons_outline:users',
+        link: '/personal'
     }
 ];
 
