@@ -2,7 +2,8 @@ export interface Aplicaciones {
   id: number
   nombre: string
 }
-export interface Roles {
+export interface Roles extends Aplicaciones {
+
 }
 export interface Modulos {
 }

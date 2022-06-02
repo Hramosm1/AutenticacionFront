@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http'
 import { Observable } from 'rxjs';
 import { environment } from 'environments/environment';
 
-export type BaseType = 'aplicaciones' | 'usuarios' | 'roles' | 'modulos' | 'permisos' | 'permisosEspeciales';
+export type BaseType = 'aplicaciones' | 'usuarios' | 'roles' | 'modulos' | 'permisos' | 'permisosEspeciales' | 'usuarioPorRol';
 interface postResult {
   recordset: any[]
   recordsets: any[]
@@ -41,3 +41,4 @@ export class BackendService {
     return this.http.put(this.base + 'permisos', body)
   }
 }
+

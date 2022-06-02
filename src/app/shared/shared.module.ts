@@ -7,6 +7,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from "@angular/material/table";
 import { DialogsModule } from './dialogs/dialogs.module';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { TablaUsuariosComponent } from './tabla-usuarios/tabla-usuarios.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
     imports: [
@@ -16,7 +18,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
         MatButtonModule,
         MatTableModule,
         DialogsModule,
-        MatPaginatorModule
+        MatPaginatorModule,
+        MatDialogModule
     ],
     exports: [
         CommonModule,
@@ -27,7 +30,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     ],
     declarations: [
         CrudSimpleComponent,
-        TitleComponent
+        TitleComponent,
+        TablaUsuariosComponent
     ]
 })
 export class SharedModule {
