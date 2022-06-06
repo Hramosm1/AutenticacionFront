@@ -11,3 +11,9 @@ export interface Permisos {
 }
 export interface PermisosEspeciales {
 }
+export interface Usuarios {
+  correo: string
+  id: string
+  nombre: string
+  usuario: string
+}

@@ -12,6 +12,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { NuevoRolPorUsuarioComponent } from './nuevo-rol-por-usuario/nuevo-rol-por-usuario.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
+import { PipesModule } from 'app/core/pipes/pipes.module';
 
 
 
@@ -31,7 +33,9 @@ import { MatInputModule } from '@angular/material/input';
     MatPaginatorModule,
     MatDialogModule,
     MatIconModule,
-    MatInputModule
+    MatInputModule,
+    NgxMatSelectSearchModule,
+    PipesModule
   ]
 })
 export class EquipoModule { }

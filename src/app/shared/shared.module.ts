@@ -9,6 +9,8 @@ import { DialogsModule } from './dialogs/dialogs.module';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { TablaUsuariosComponent } from './tabla-usuarios/tabla-usuarios.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
     imports: [
@@ -18,8 +20,10 @@ import { MatDialogModule } from '@angular/material/dialog';
         MatButtonModule,
         MatTableModule,
         DialogsModule,
+        MatDialogModule,
         MatPaginatorModule,
-        MatDialogModule
+        MatFormFieldModule,
+        MatInputModule,
     ],
     exports: [
         CommonModule,
