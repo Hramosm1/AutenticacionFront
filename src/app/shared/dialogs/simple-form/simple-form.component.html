@@ -1,0 +1,19 @@
+<h2 mat-dialog-title>Usted esta {{data.editar?'editando':'creando'}} {{data.tabla}}</h2>
+<mat-dialog-content class="mat-typography">
+  <form [formGroup]="formulario">
+    <ng-container *ngFor="let input of data.inputs">
+      <mat-form-field class="w-full" *ngIf="input.default?false:true">
+        <mat-label>{{input.name}}</mat-label>
+        <input matInput [formControlName]="input.key">
+      </mat-form-field>
+    </ng-container>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close color="warn">
+    Cancelar
+  </button>
+  <button mat-raised-button color="primary" (click)="confirmar()">
+    Confirmar
+  </button>
+</mat-dialog-actions>

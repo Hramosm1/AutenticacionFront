@@ -1,1 +1,7 @@
-<p>aplicaciones works!</p>
+<div class="flex flex-col flex-1">
+  <app-title title="Aplicaciones" subTitle="Mantenimiento"
+    description="Desde aqui puedes agregar o eliminar las distintas aplicaciones en las que vas a implementar la autenticacion">
+  </app-title>
+  <app-crud-simple class="h-full flex flex-col items-center" [columns]="columns" [data]="data$"
+    [dataCreateAndEdit]="dataCreateAndEdit"></app-crud-simple>
+</div>

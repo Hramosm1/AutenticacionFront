@@ -3,6 +3,9 @@ import { CommonModule } from '@angular/common';
 
 import { ModulosRoutingModule } from './modulos-routing.module';
 import { ModulosComponent } from './modulos/modulos.component';
+import { SharedModule } from 'app/shared/shared.module';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
 
 
 @NgModule({
@@ -11,7 +14,10 @@ import { ModulosComponent } from './modulos/modulos.component';
   ],
   imports: [
     CommonModule,
-    ModulosRoutingModule
+    ModulosRoutingModule,
+    SharedModule,
+    MatFormFieldModule,
+    MatSelectModule
   ]
 })
 export class ModulosModule { }

@@ -1,0 +1,24 @@
+<ng-container *ngIf="dataSource">
+  <div class="w-10/12 shadow-lg">
+    <mat-table [dataSource]="dataSource">
+      <ng-container *ngFor="let col of columns" [matColumnDef]="col.key">
+        <mat-header-cell *matHeaderCellDef> {{col.name}}
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element[col.key]}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <button mat-raised-button color="accent" class="shadow mx-2" (click)="abrirEditar(row.id)">Editar</button>
+          <button mat-button color="warn" class="shadow-xl mx-2" (click)="eliminar(row.id,row.nombre)">Eliminar</button>
+        </mat-cell>
+      </ng-container>
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+  </div>
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label=""></mat-paginator>
+</ng-container>
+<button (click)="abrirCrear()" mat-raised-button color="primary" class="absolute bottom-10 right-20">
+  Crear
+</button>
