@@ -8,5 +8,5 @@ export const environment = {
         messagingSenderId: '480457543365',
     },
     production: true,
-    serverUrl: ''
+    serverUrl: 'http://192.168.8.28:9401/'
 };
