@@ -18,7 +18,8 @@ import { provideAuth, getAuth } from '@angular/fire/auth';
 
 const routerConfig: ExtraOptions = {
     preloadingStrategy: PreloadAllModules,
-    scrollPositionRestoration: 'enabled'
+    scrollPositionRestoration: 'enabled',
+    useHash: true
 };
 
 @NgModule({
@@ -43,12 +44,13 @@ const routerConfig: ExtraOptions = {
 
         // 3rd party modules that require global configuration via forRoot
         MarkdownModule.forRoot({}),
-        provideFirebaseApp(() => initializeApp(environment.firebase)),
+        //provideFirebaseApp(() => initializeApp(environment.firebase)),
         provideAuth(() => getAuth())
     ],
     bootstrap: [
         AppComponent
-    ]
+    ],
+    providers: []
 })
 export class AppModule {
 }
