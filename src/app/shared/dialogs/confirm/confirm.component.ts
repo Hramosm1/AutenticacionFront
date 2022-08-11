@@ -17,9 +17,7 @@ export class ConfirmComponent {
 
   confirmar() {
     this.api.delete(this.data.api, this.data.id).subscribe(res => {
-      if (res.rowsAffected[0] > 0) {
-        this.dialogRef.close()
-      }
+      this.dialogRef.close()
     })
   }
 }

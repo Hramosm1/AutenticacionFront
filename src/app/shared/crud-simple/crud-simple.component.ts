@@ -22,7 +22,6 @@ export class CrudSimpleComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   dataSource: MatTableDataSource<any> = new MatTableDataSource()
   displayedColumns: string[]
-  dialogRef: MatDialogRef<ConfirmComponent | SimpleFormComponent>
   subs: Subscription
   constructor(private dialog: MatDialog) {
   }
@@ -45,19 +44,21 @@ export class CrudSimpleComponent implements OnInit, AfterViewInit, OnDestroy {
   }
   getData = () => {
     this.data.subscribe(res => this.dataSource.data = res)
-
   }
   eliminar(id: number | string, name: string) {
-    this.dialogRef = this.dialog.open(ConfirmComponent, { disableClose: true, data: { name, id, api: this.dataCreateAndEdit.api } })
-    this.dialogRef.afterClosed().subscribe(this.getData)
+    this.dialog
+      .open(ConfirmComponent, { disableClose: true, data: { name, id, api: this.dataCreateAndEdit.api } })
+      .afterClosed().subscribe(this.getData)
   }
   abrirCrear() {
-    this.dialogRef = this.dialog.open(SimpleFormComponent, { data: { ...this.dataCreateAndEdit, editar: false }, disableClose: true })
-    this.dialogRef.afterClosed().subscribe(this.getData)
+    this.dialog
+      .open(SimpleFormComponent, { data: { ...this.dataCreateAndEdit, editar: false }, disableClose: true })
+      .afterClosed().subscribe(this.getData)
   }
   abrirEditar(id: number | string) {
-    this.dialogRef = this.dialog.open(SimpleFormComponent, { data: { ...this.dataCreateAndEdit, editar: true, id }, disableClose: true })
-    this.dialogRef.afterClosed().subscribe(this.getData)
+    this.dialog
+      .open(SimpleFormComponent, { data: { ...this.dataCreateAndEdit, editar: true, id }, disableClose: true })
+      .afterClosed().subscribe(this.getData)
   }
 
 }

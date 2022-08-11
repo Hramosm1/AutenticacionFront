@@ -22,9 +22,7 @@ export class SimpleFormComponent implements OnInit {
   formulario: FormGroup
   obs: Observer<any> = {
     next: res => {
-      if (res.rowsAffected[res.rowsAffected.length - 1] > 0) {
-        this.dialogRef.close()
-      }
+      this.dialogRef.close()
     },
     error: () => null,
     complete: () => null
@@ -35,7 +33,6 @@ export class SimpleFormComponent implements OnInit {
       return { ...acc, [cur.key]: [cur.default ? cur.default : '', Validators.required] }
     }, {})
     this.formulario = this.fb.group(group)
-    console.log(this.formulario)
   }
 
   confirmar() {
