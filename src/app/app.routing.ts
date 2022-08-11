@@ -6,7 +6,7 @@ export const appRoutes: Route[] = [
 
     { path: '', pathMatch: 'full', redirectTo: 'permisos' },
 
-    { path: 'signed-in-redirect', pathMatch: 'full', redirectTo: 'permisos' },
+    { path: 'signed-in-redirect', pathMatch: 'full', redirectTo: 'aplicaciones' },
 
     { path: 'auth', loadChildren: () => import('app/modules/auth/auth.module').then(m => m.AuthModule) },
     // Admin routes
