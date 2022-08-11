@@ -4,12 +4,27 @@ export interface Permiso {
   crear: boolean;
   editar: boolean;
   eliminar: boolean;
-  idModulo: number;
-  idRol: number;
-  modulo: string;
-  aplicacion: string;
-  rol: string;
+  Roles: Roles;
+  Modulos: Modulos;
+  activo: boolean;
 }
 export interface PermisoEspecial {
   id: number, nombre: string, aplicacion: string
 }
+
+export interface Roles {
+  id: number;
+  nombre: string;
+}
+
+export interface Aplicaciones {
+  id: number;
+  nombre: string;
+}
+
+export interface Modulos {
+  id: number;
+  nombre: string;
+  Aplicaciones: Aplicaciones;
+}
+
