@@ -5,7 +5,9 @@ import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import {BackendService} from 'app/core/services/backend.service';
 import {switchMap} from 'rxjs/operators';
-import {Observable} from "rxjs";
+import {Observable} from 'rxjs';
+import {ModalEditarRolComponent} from './modal-editar-rol/modal-editar-rol.component';
+import {UsuarioConRol} from '../../../interfaces/crud-simple';
 
 @Component({
 	selector: 'app-asignacion-de-roles',
@@ -14,7 +16,7 @@ import {Observable} from "rxjs";
 })
 export class AsignacionDeRolesComponent implements OnInit {
 	@ViewChild(MatPaginator) paginator: MatPaginator;
-	aplicaciones$: Observable<any>;
+	aplicaciones$: Observable<UsuarioConRol[]>;
 	aplicacion: FormControl;
 	buscador: FormControl;
 	dataSource: MatTableDataSource<any>;
@@ -26,7 +28,7 @@ export class AsignacionDeRolesComponent implements OnInit {
 		this.aplicacion = new FormControl(null, Validators.required);
 		this.buscador = new FormControl('');
 		this.dataSource = new MatTableDataSource<any>();
-		this.aplicaciones$ = this.api.getAll('aplicaciones');
+		this.aplicaciones$ = this.api.getAll<UsuarioConRol>('aplicaciones');
 	}
 
 	ngOnInit(): void {
@@ -41,7 +43,7 @@ export class AsignacionDeRolesComponent implements OnInit {
 			.subscribe(texto => this.dataSource.filter = texto);
 	}
 
-	editar(id: number): void {
-		console.log(id);
+	editar(usuario: UsuarioConRol): void {
+		this.dialog.open(ModalEditarRolComponent, {data:usuario,width:'80vw'});
 	}
 }

@@ -1,0 +1,43 @@
+<ng-container *ngIf="formulario">
+    <form [formGroup]="formulario">
+        <button
+                [disabled]="!formulario.touched"
+                class="w-full"
+                (click)="actualizar()"
+                mat-raised-button
+                color="accent"
+        >
+            Actualizar
+        </button>
+        <div
+                *ngIf="permisos$"
+                class="grid grid-cols-1 lg:grid-cols-2 md:gap-5 w-10/12 mx-auto mt-8"
+        >
+            <mat-card *ngFor="let permiso of permisos">
+                <mat-card-header>
+                    <mat-card-title>{{
+                        permiso.Roles.nombre | titlecase
+                        }}</mat-card-title>
+                    <mat-card-subtitle
+                    >{{ permiso.Modulos.Aplicaciones.nombre | uppercase }} -
+                        {{ permiso.Modulos.nombre }}</mat-card-subtitle
+                    >
+                </mat-card-header>
+                <mat-card-content [formGroupName]="permiso.Roles.id">
+                    <mat-list role="list">
+                        <mat-list-item
+                                *ngFor="let accion of acciones"
+                                role="listitem"
+                        >
+                            {{ accion | titlecase }} <span class="flex flex-1"></span>
+                            <mat-checkbox
+                                    [formControlName]="accion"
+                                    color="primary"
+                            ></mat-checkbox>
+                        </mat-list-item>
+                    </mat-list>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </form>
+</ng-container>

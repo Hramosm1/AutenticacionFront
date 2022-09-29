@@ -5,7 +5,7 @@ import { groupBy } from 'lodash';
 import { Modulo } from 'app/views/interfaces/modulos';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Permiso } from 'app/views/interfaces/permisos';
-import { values } from "lodash";
+import { values } from 'lodash';
 
 @Component({
   selector: 'app-permisos',
@@ -18,42 +18,40 @@ export class PermisosComponent implements OnInit, OnDestroy {
       map(val => groupBy(val, 'Aplicaciones.nombre')),
       map(obj => Object.keys(obj)
         .map(key => ({ aplicacion: key, modulos: obj[key] })))
-    )
-  modulo = new FormControl()
-  permisos$: Observable<Permiso[]>
-  formulario: FormGroup
-  permisos: Permiso[]
-  aplicacion$ = new BehaviorSubject<number>(0)
+    );
+  modulo = new FormControl();
+  permisos$: Observable<Permiso[]>;
+  formulario: FormGroup;
+  permisos: Permiso[];
+  aplicacion$ = new BehaviorSubject<number>(0);
 
-  acciones = ['ver', 'crear', 'editar', 'eliminar']
+  acciones = ['ver', 'crear', 'editar', 'eliminar'];
 
   constructor(private api: BackendService, private fb: FormBuilder) { }
 
   ngOnInit(): void {
-    this.modulo.valueChanges.subscribe(({ id, idAplicacion }) => {
-      this.aplicacion$.next(idAplicacion)
-      this.permisos$ = this.api.getById<Permiso[], number>('permisos', id)
-      this.reset()
-    })
+    this.modulo.valueChanges.subscribe((modulo) => {
+      this.aplicacion$.next(modulo.Aplicaciones.id);
+      this.permisos$ = this.api.getById<Permiso[], number>('permisos', modulo.id);
+      this.reset();
+    });
   }
   ngOnDestroy(): void {
-    this.aplicacion$.complete()
+    this.aplicacion$.complete();
   }
   actualizar() {
-    const formularioResult = values(this.formulario.value)
+    const formularioResult = values(this.formulario.value);
     this.api.actualizarPermisos(formularioResult).subscribe((val) => {
-      console.log(val)
-      // this.permisos$.subscribe(_ => { this.formulario.reset(); this.reset() })
-    })
+       this.permisos$.subscribe((_) => { this.formulario.reset(); this.reset(); });
+    });
   }
   private reset() {
-    this.permisos$.subscribe(res => this.permisos = res)
+    this.permisos$.subscribe(res => this.permisos = res);
     this.permisos$.pipe(map(val => val
       .map(({ Roles, ver, crear, editar, eliminar, id }) => ({ rol: Roles.id, fg: this.fb.group({ ver, crear, editar, eliminar, id }) }))
       .reduce((cur, { rol, fg }) => ({ ...cur, [rol]: fg }), {})))
-      .subscribe(groups => {
-        console.log(groups);
-        this.formulario = this.fb.group(groups)
-      })
+      .subscribe((groups) => {
+        this.formulario = this.fb.group(groups);
+      });
   }
 }

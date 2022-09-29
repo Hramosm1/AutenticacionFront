@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PermisosEspecialesComponent } from './permisos-especiales.component';
+import { ListadoDePermisosComponent } from './listado-de-permisos.component';
 
-describe('PermisosEspecialesComponent', () => {
-  let component: PermisosEspecialesComponent;
-  let fixture: ComponentFixture<PermisosEspecialesComponent>;
+describe('ListadoDePermisosComponent', () => {
+  let component: ListadoDePermisosComponent;
+  let fixture: ComponentFixture<ListadoDePermisosComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PermisosEspecialesComponent ]
+      declarations: [ ListadoDePermisosComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PermisosEspecialesComponent);
+    fixture = TestBed.createComponent(ListadoDePermisosComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

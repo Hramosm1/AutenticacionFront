@@ -14,13 +14,15 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 import { PipesModule } from 'app/core/pipes/pipes.module';
+import { ModalEditarRolComponent } from './asignacion-de-roles/modal-editar-rol/modal-editar-rol.component';
 
 
 
 @NgModule({
   declarations: [
     AsignacionDeRolesComponent,
-    NuevoRolPorUsuarioComponent
+    NuevoRolPorUsuarioComponent,
+    ModalEditarRolComponent,
   ],
   imports: [
     CommonModule,
