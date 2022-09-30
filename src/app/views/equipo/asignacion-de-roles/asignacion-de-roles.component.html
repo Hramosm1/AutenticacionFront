@@ -10,6 +10,10 @@
 	</mat-form-field>
 
 	<div class="mat-elevation-z8 w-10/12 mx-auto">
+		<div class="flex flex-col mx-auto w-10/12" *ngIf="usuariosNoAsignados.usuariosSinAsignar>0">
+			<span class="text-center text-xl">Existen {{usuariosNoAsignados.usuariosSinAsignar}}</span>
+			<button mat-raised-button color="warn" (click)="importar()" [disabled]="cargando">Importar todos los usuarios</button>
+		</div>
 		<div *ngIf="aplicacion.valid" class="flex gap-6 mx-6">
 			<mat-form-field class="w-full">
 				<mat-label>Buscar...</mat-label>
@@ -50,7 +54,6 @@
 				<td class="mat-cell" colspan="4">
 					<div class=" flex justify-between">
 						<span>No se encontraron usuarios para esa aplicacion</span>
-						<button mat-button color="warn" *ngIf="aplicacion.valid">Importar usuarios</button>
 					</div>
 				</td>
 			</tr>

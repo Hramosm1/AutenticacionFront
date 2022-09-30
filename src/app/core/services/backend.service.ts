@@ -10,7 +10,8 @@ export type BaseType =
 	| 'modulos'
 	| 'permisos'
 	| 'permisosEspeciales'
-	| 'usuarioPorRol';
+	| 'usuarioPorRol'
+	| 'importaciones';
 
 interface PostResult {
 	recordset: any[];

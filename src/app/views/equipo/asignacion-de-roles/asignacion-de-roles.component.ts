@@ -5,7 +5,7 @@ import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import {BackendService} from 'app/core/services/backend.service';
 import {switchMap} from 'rxjs/operators';
-import {Observable} from 'rxjs';
+import {Observable, tap} from 'rxjs';
 import {ModalEditarRolComponent} from './modal-editar-rol/modal-editar-rol.component';
 import {UsuarioConRol} from '../../../interfaces/crud-simple';
 
@@ -22,6 +22,8 @@ export class AsignacionDeRolesComponent implements OnInit {
 	dataSource: MatTableDataSource<any>;
 	dialogRef: MatDialogRef<any>;
 	displayedColumns: string[];
+	usuariosNoAsignados: { usuariosSinAsignar: number } = {usuariosSinAsignar: 0};
+	cargando = false;
 
 	constructor(private api: BackendService, private dialog: MatDialog) {
 		this.displayedColumns = ['nombre', 'usuario', 'rol', 'editar'];
@@ -33,7 +35,8 @@ export class AsignacionDeRolesComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.aplicacion.valueChanges
-			.pipe(switchMap(aplicacion => this.api.getById<any, number>('usuarioPorRol', aplicacion)))
+			.pipe(tap(val => this.api.getById('importaciones', val).subscribe((x: any) => this.usuariosNoAsignados = x)),
+				switchMap(aplicacion => this.api.getById<any, number>('usuarioPorRol', aplicacion)))
 			.subscribe((data) => {
 				this.dataSource.data = data;
 				this.dataSource.paginator = this.paginator;
@@ -44,6 +47,31 @@ export class AsignacionDeRolesComponent implements OnInit {
 	}
 
 	editar(usuario: UsuarioConRol): void {
-		this.dialog.open(ModalEditarRolComponent, {data:usuario,width:'80vw'});
+		this.dialog.open(ModalEditarRolComponent, {data: usuario, width: '80vw'});
+	}
+
+	actualizar() {
+		this.api.getById<any, number>('usuarioPorRol', this.aplicacion.value)
+			.subscribe((data) => {
+				this.dataSource.data = data;
+				this.dataSource.paginator = this.paginator;
+				this.buscador.reset();
+			});
+	}
+
+	importar() {
+		this.cargando = true;
+		this.api.create('importaciones', {idAplicacion: this.aplicacion.value})
+			.subscribe({
+				next: () => {
+					this.actualizar();
+					this.api.getById('importaciones', this.aplicacion.value).subscribe((x: any) => this.usuariosNoAsignados = x)
+				},
+				error: () => {
+				},
+				complete: () => {
+					this.cargando = false;
+				}
+			});
 	}
 }
